@@ -11,6 +11,9 @@ import pin from "./pin.svg";
 const MapChart = ({ user }) => {
   const mapRef = useRef();
 
+  console.log(user.address.coordinates.lat);
+  console.log(user.address.coordinates.lng);
+
   const onLoad = (e) => {
     if (mapRef.current) {
       const pinImage = new Image();
@@ -28,8 +31,8 @@ const MapChart = ({ user }) => {
       <Map
         mapboxAccessToken="pk.eyJ1IjoiYWRpdGh5YTk1IiwiYSI6ImNscGsxMWtxYjA1czAyaXA3MndsNjViaGkifQ.ce8RjQ_84kY6y2Lhn6gA9w"
         initialViewState={{
-          longitude: 2.29,
-          latitude: 48.85,
+          longitude: user?.address?.coordinates?.lng,
+          latitude: user?.address?.coordinates?.lat,
           zoom: 12,
         }}
         style={{ width: 600, height: 400 }}
@@ -37,7 +40,11 @@ const MapChart = ({ user }) => {
         ref={mapRef}
         onLoad={onLoad}
       >
-        <Marker longitude={2.29} latitude={48.85} anchor="bottom">
+        <Marker
+          longitude={user?.address?.coordinates?.lng}
+          latitude={user?.address?.coordinates?.lat}
+          anchor="bottom"
+        >
           <img src={pin} className="" />
         </Marker>
       </Map>
