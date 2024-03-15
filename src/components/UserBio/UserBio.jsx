@@ -29,11 +29,6 @@ import Loader from "../Loader/Loader";
 const UserBio = ({ user, openModal, setOpenModal }) => {
   return (
     <>
-      <div>
-        <h2 className="headingtitle">
-          User detail of {user.firstName}&nbsp;{user.lastName}
-        </h2>
-      </div>
       {/* Bio content */}
       <div>
         <div className="singleusergrid">

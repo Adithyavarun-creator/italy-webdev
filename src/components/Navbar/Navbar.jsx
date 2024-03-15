@@ -55,10 +55,12 @@ const Navbar = () => {
           <NavLink
             to="/statistics"
             className={({ isActive }) =>
-              isActive ? "linkstyle active nav-linktext" : "nav-linktext linkstyle"
+              isActive
+                ? "linkstyle active nav-linktext"
+                : "nav-linktext linkstyle"
             }
           >
-            Statistics
+            Statistics Page
           </NavLink>
         </div>
       </nav>
@@ -95,7 +97,7 @@ const Navbar = () => {
                     {...framerText(4)}
                     onClick={mobileedit}
                   >
-                    Statistics
+                    Statistics Page
                   </motion.li>
                 </ul>
               </div>

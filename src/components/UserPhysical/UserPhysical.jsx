@@ -10,7 +10,7 @@ import { BiFemale, BiMale } from "react-icons/bi";
 
 const UserPhysical = ({ user }) => {
   return (
-    <section className="userphysical-section">
+    <section className="userphysical-section" >
       <div>
         <h2 className="headingtitle flex">
           <FaUserCheck />

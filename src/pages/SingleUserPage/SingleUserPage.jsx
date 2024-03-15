@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./SingleUserPage.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../components/Spinner/Spinner";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { singleUser } from "../../baseUrl/baseUrl";
+import { shortcutTitle, singleUser } from "../../baseUrl/baseUrl";
 import {
   FaRegUser,
   FaMale,
@@ -44,7 +44,41 @@ const SingleUserPage = () => {
   const [user, setUser] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
-  // console.log(id);
+  const physicalref = useRef(null);
+
+  const companyref = useRef(null);
+
+  const locationref = useRef(null);
+
+  const educationref = useRef(null);
+
+  const contactref = useRef(null);
+
+  const bankref = useRef(null);
+
+  const accessref = useRef(null);
+
+  const handleClickphys = () => {
+    physicalref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleClickaccess = () => {
+    accessref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleClickcompany = () => {
+    companyref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleClickedu = () => {
+    educationref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleClickbank = () => {
+    bankref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleClickloc = () => {
+    locationref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleClickcontact = () => {
+    contactref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const getUser = async () => {
@@ -54,9 +88,6 @@ const SingleUserPage = () => {
       setUser(data);
     };
 
-    // setTimeout(() => {
-    //   getUser();
-    // }, 2000);
     getUser();
   }, [id]);
 
@@ -80,6 +111,50 @@ const SingleUserPage = () => {
         exit={{ x: "-20%", opacity: 0, transition: { duration: 0.5 } }}
         transition={{ delay: 0, duration: 0.8 }}
       >
+        <div>
+          <h2 className="headingtitle flex">
+            <span className="userid">{user.id}</span>&nbsp; User detail of{" "}
+            {user.firstName}&nbsp;{user.lastName}
+          </h2>
+        </div>
+        <div className="shortcut-section">
+          <div>
+            <span className="shortcut-title" onClick={handleClickphys}>
+              #Physical
+            </span>
+          </div>
+          <div>
+            <span className="shortcut-title" onClick={handleClickloc}>
+              #Location
+            </span>
+          </div>
+          <div>
+            <span className="shortcut-title" onClick={handleClickedu}>
+              #Education
+            </span>
+          </div>
+          <div>
+            <span className="shortcut-title" onClick={handleClickaccess}>
+              #Accessory
+            </span>
+          </div>
+          <div>
+            <span className="shortcut-title" onClick={handleClickcompany}>
+              #Company
+            </span>
+          </div>
+          <div>
+            <span className="shortcut-title" onClick={handleClickcontact}>
+              #Contact
+            </span>
+          </div>
+          <div>
+            <span className="shortcut-title" onClick={handleClickbank}>
+              #Banking
+            </span>
+          </div>
+        </div>
+
         {/* keep id no and name */}
         <div className="userbox">
           <UserBio
@@ -89,27 +164,27 @@ const SingleUserPage = () => {
           />
         </div>
 
-        <div className="userbox">
+        <div className="userbox" ref={physicalref}>
           <UserPhysical user={user} />
         </div>
 
-        <div className="userbox">
+        <div className="userbox" ref={locationref}>
           <UserLocation user={user} />
         </div>
 
-        <div className="userbox">
+        <div className="userbox" ref={educationref}>
           <UserStudies user={user} />
         </div>
-        <div className="userbox">
+        <div className="userbox" ref={accessref}>
           <UserAccessory user={user} />
         </div>
-        <div className="userbox">
+        <div className="userbox" ref={companyref}>
           <UserCompany user={user} />
         </div>
-        <div className="userbox">
+        <div className="userbox" ref={contactref}>
           <UserContact user={user} />
         </div>
-        <div className="userbox">
+        <div className="userbox" ref={bankref}>
           <UserBank user={user} />
         </div>
       </motion.section>
