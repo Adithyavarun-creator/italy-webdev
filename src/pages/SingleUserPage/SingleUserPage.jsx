@@ -218,9 +218,24 @@ const SingleUserPage = () => {
           <UserContact user={user} />
         </div>
 
-        <div className="userbox" ref={bankref}>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: -10,
+            transition: {
+              duration: 2,
+            },
+          }}
+          viewport={{ once: true }}
+          className="userbox"
+          ref={bankref}
+        >
           <UserBank user={user} />
-        </div>
+        </motion.div>
       </motion.section>
     </HelmetProvider>
   );
