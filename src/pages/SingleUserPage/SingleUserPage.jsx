@@ -164,9 +164,24 @@ const SingleUserPage = () => {
           />
         </div>
 
-        <div className="userbox" ref={physicalref}>
+        <motion.div
+          className="userbox"
+          initial={{
+            opacity: 0,
+            y: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: -20,
+            transition: {
+              duration: 1,
+            },
+          }}
+          viewport={{ once: true }}
+          ref={physicalref}
+        >
           <UserPhysical user={user} />
-        </div>
+        </motion.div>
 
         <div className="userbox" ref={locationref}>
           <UserLocation user={user} />
@@ -175,15 +190,34 @@ const SingleUserPage = () => {
         <div className="userbox" ref={educationref}>
           <UserStudies user={user} />
         </div>
-        <div className="userbox" ref={accessref}>
+
+        <motion.div
+          className="userbox"
+          initial={{
+            opacity: 0,
+            y: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: -20,
+            transition: {
+              duration: 1,
+            },
+          }}
+          viewport={{ once: true }}
+          ref={accessref}
+        >
           <UserAccessory user={user} />
-        </div>
+        </motion.div>
+
         <div className="userbox" ref={companyref}>
           <UserCompany user={user} />
         </div>
+
         <div className="userbox" ref={contactref}>
           <UserContact user={user} />
         </div>
+
         <div className="userbox" ref={bankref}>
           <UserBank user={user} />
         </div>

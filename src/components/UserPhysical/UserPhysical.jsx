@@ -7,10 +7,11 @@ import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineBloodtype } from "react-icons/md";
 import { PiPersonArmsSpreadFill } from "react-icons/pi";
 import { BiFemale, BiMale } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 const UserPhysical = ({ user }) => {
   return (
-    <section className="userphysical-section" >
+    <section className="userphysical-section">
       <div>
         <h2 className="headingtitle flex">
           <FaUserCheck />
@@ -19,13 +20,27 @@ const UserPhysical = ({ user }) => {
       </div>
 
       <div className="physicallayoutcontent">
-        <div className="align">
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 20,
+            transition: {
+              duration: 2,
+            },
+          }}
+          viewport={{ once: true }}
+          className="align"
+        >
           {user.gender === "male" ? (
             <BiMale className="companyicon" />
           ) : (
             <BiFemale className="companyicon" />
           )}
-        </div>
+        </motion.div>
         <div className="physicallayout">
           <div className="boxes">
             <h4 className="labeltitle flex">

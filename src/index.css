@@ -13,11 +13,12 @@ body {
   background-color: #fff;
   font-family: "Mukta", sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
   width: 5px;
-  height: 25px;
+  height: 5px;
 }
 ::-webkit-scrollbar-button {
   background: #fff;

@@ -2,10 +2,9 @@ import React from "react";
 import "./UserLocation.css";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaRegAddressCard, FaCity } from "react-icons/fa";
-import { GrMapLocation } from "react-icons/gr";
 import { BsSignpost } from "react-icons/bs";
 import { SlUserFemale } from "react-icons/sl";
-import { PiPersonArmsSpreadFill } from "react-icons/pi";
+import { motion } from "framer-motion";
 import MapChart from "../Map/MapChart";
 
 const UserLocation = ({ user }) => {
@@ -49,10 +48,24 @@ const UserLocation = ({ user }) => {
             <span className="inputtitle">{user.address.state}</span>
           </div>
         </div>
-        <div className="mapdesign">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: -10,
+            transition: {
+              duration: 2,
+            },
+          }}
+          viewport={{ once: true }}
+          className="mapdesign"
+        >
           {/* Map */}
           <MapChart user={user} />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

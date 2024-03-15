@@ -1,9 +1,10 @@
 import "./UserBank.css";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { FaBitcoin, FaRegCopy } from "react-icons/fa6";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { BsBank, BsBank2 } from "react-icons/bs";
 import { copyToClipBoard } from "../../baseUrl/baseUrl";
+import { motion } from "framer-motion";
 
 const UserBank = ({ user }) => {
   return (
@@ -17,7 +18,21 @@ const UserBank = ({ user }) => {
 
       <div className="banksection">
         {/* Box-1 */}
-        <div className="bankaccountbox">
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: -10,
+            transition: {
+              duration: 2,
+            },
+          }}
+          viewport={{ once: true }}
+          className="bankaccountbox"
+        >
           <div className="">
             <BsBank2 className="accounticon" />
           </div>
@@ -49,9 +64,23 @@ const UserBank = ({ user }) => {
           <div>
             <h2 className="banktext">Card Expiry : {user.bank.cardExpire}</h2>
           </div>
-        </div>
+        </motion.div>
         {/* Box-2*/}
-        <div className="bankaccountbox">
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 20,
+            transition: {
+              duration: 2,
+            },
+          }}
+          viewport={{ once: true }}
+          className="bankaccountbox"
+        >
           <div className="">
             <FaBitcoin className="accounticon" />
           </div>
@@ -75,7 +104,7 @@ const UserBank = ({ user }) => {
           <div>
             <h2 className="banktext">Network : {user.crypto.network}</h2>
           </div>
-        </div>
+        </motion.div>
       </div>
       <Toaster position="top-center" reverseOrder={false} />
     </section>

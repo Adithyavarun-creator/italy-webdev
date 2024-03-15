@@ -7,12 +7,27 @@ import { TbDeviceImacCheck } from "react-icons/tb";
 import { FaServer, FaUserShield } from "react-icons/fa6";
 import { GrDomain } from "react-icons/gr";
 import { MdEnhancedEncryption } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const UserAccessory = ({ user }) => {
   return (
-    <section className="useraccessory-section">
+    <motion.section
+      initial={{
+        opacity: 0,
+        y: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: -10,
+        transition: {
+          duration: 2,
+        },
+      }}
+      viewport={{ once: true }}
+      className="useraccessory-section"
+    >
       <div>
-      <h2 className="headingtitle flex">
+        <h2 className="headingtitle flex">
           <BiDetail className="singleusericon" />
           User Accessory Specification
         </h2>
@@ -66,7 +81,7 @@ const UserAccessory = ({ user }) => {
       {/* <div>
         <h4 className="title">Versions enabled with : {user.userAgent}</h4>
       </div> */}
-    </section>
+    </motion.section>
   );
 };
 
