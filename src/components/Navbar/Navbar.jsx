@@ -31,13 +31,8 @@ const Navbar = () => {
     setToggle(false);
   };
 
-  const mobileabout = () => {
-    navigate("/about");
-    setToggle(false);
-  };
-
   const mobileedit = () => {
-    navigate("/edit-image");
+    navigate("/statistics");
     setToggle(false);
   };
 
