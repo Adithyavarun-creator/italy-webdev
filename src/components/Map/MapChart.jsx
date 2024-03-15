@@ -11,8 +11,7 @@ import pin from "./pin.svg";
 const MapChart = ({ user }) => {
   const mapRef = useRef();
 
-  console.log(user.address.coordinates.lat);
-  console.log(user.address.coordinates.lng);
+
 
   const onLoad = (e) => {
     if (mapRef.current) {
