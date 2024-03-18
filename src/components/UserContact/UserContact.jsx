@@ -7,6 +7,7 @@ import {
 } from "react-icons/md";
 import { copyToClipBoard } from "../../baseUrl/baseUrl";
 import { FaRegCopy } from "react-icons/fa6";
+import {Toaster} from "react-hot-toast";
 
 const UserContact = ({ user }) => {
   return (
@@ -57,6 +58,7 @@ const UserContact = ({ user }) => {
           </div>
         </div>
       </div>
+            <Toaster position="top-center" reverseOrder={false} />
     </section>
   );
 };
